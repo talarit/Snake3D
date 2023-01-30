@@ -16,10 +16,14 @@ public class Game : MonoBehaviour
     [SerializeField] MenuUI _menuUI;
     private int counttail=0;
     [SerializeField] Tail _tail;
+    public AudioClip audioClip;
+    private AudioSource _audio;
 
 
     private void Awake()
     {
+        _audio = GetComponent<AudioSource>();
+        _audio.Play();
         //проверка есть ли здоровье
         if (HealthIndex > 0)
         {
@@ -62,12 +66,16 @@ public class Game : MonoBehaviour
         //касание еды +10
         if (collision.gameObject.tag == "food")
         {
+            //звук еды
+            _audio.PlayOneShot(audioClip,10f);
             health += 10;
             
         }
         //касание еды +25
         if (collision.gameObject.tag == "food2")
         {
+            //звук еды
+            _audio.PlayOneShot(audioClip,10f);
             health += 25;
 
         }
