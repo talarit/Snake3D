@@ -9,6 +9,7 @@ public class LivesCube : MonoBehaviour
     [SerializeField] GameObject _this;
     [SerializeField] private Slider _hpSlider;
     [SerializeField] private Text _textHP;
+    [SerializeField] private GameObject Lose;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +41,8 @@ public class LivesCube : MonoBehaviour
         if (collision.gameObject.tag=="Player")
         {
             health_cub -= 1;
+            //система частиц (осколки куба)
+            Lose.GetComponent<ParticleSystem>().Play();
         }
     }
 
